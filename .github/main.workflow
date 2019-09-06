@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["new-action"]
+  resolves = ["new-action-1"]
 }
 
 action "new-action" {
@@ -16,5 +16,15 @@ action "new-action" {
     URL_TITLE = "Build Details"
     SOUND = "magic"
     PRIORITY = "1"
+  }
+}
+
+action "new-action-1" {
+  needs = ["new-action"]
+  uses = "ShaunLWM/action-join@master"
+  secrets = ["DEVICE_ID", "API_KEY"]
+  env = {
+    TITLE = "Build Complete"
+    TEXT = "Your project has been built."
   }
 }
