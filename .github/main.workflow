@@ -1,9 +1,9 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["new-action-1"]
+  resolves = ["Pushover", "Join"]
 }
 
-action "new-action" {
+action "Pushover" {
   uses = "maddox/actions/pushover@master"
   secrets = [
     "USER_KEY",
@@ -19,8 +19,7 @@ action "new-action" {
   }
 }
 
-action "new-action-1" {
-  needs = ["new-action"]
+action "Join" {
   uses = "ShaunLWM/action-join@master"
   secrets = ["DEVICE_ID", "API_KEY"]
   env = {
