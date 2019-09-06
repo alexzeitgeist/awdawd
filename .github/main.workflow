@@ -4,13 +4,17 @@ workflow "New workflow" {
 }
 
 action "new-action" {
-  uses = "ShaunLWM/action-join@master"
+  uses = "maddox/actions/pushover@master"
   secrets = [
-    "API_KEY",
-    "DEVICE_ID",
+    "USER_KEY",
+    "APP_TOKEN",
   ]
   env = {
     TITLE = "Build Complete"
-    TEXT = "Your project has been built."
+    MESSAGE = "Your container has been built and verified."
+    URL = "https://your.builddetails.com/builds/23212"
+    URL_TITLE = "Build Details"
+    SOUND = "magic"
+    PRIORITY = "1"
   }
 }
